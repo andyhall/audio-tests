@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Audio test</title>
+	<style type="text/css">
+		button {
+			margin: 30px 70px 0;
+			padding: 8px 16px;
+		}
+		button, label { 
+			font: 300 20px "Helvetica Neue", Helvetica, sans-serif;
+		}
+		.label1 {
+			padding: 2px 6px;
+			display: inline-block;
+			text-align: right;
+			width: 50px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="ui"></div>
+	<script id='template' type='text/ractive'>
+		<button on-click='start-stop'>{{ playing ? 'Stop' : 'Start'}}</button>
+		{{ #each params:i }}
+			<p></p>
+			<label class="label1" for="param{{i}}">{{val}}</label>
+			<input on-input="param-change"  
+				type="range" min="{{min}}" value="{{val}}" max="{{max}}" step="{{step}}">
+			<label for="param{{i}}">{{label}}</label>
+		{{ /each }}
+	</script>
+
+	<script src="bundle.js"></script>
+	<!--<script src="http://localhost:8080/webpack-dev-server.js"></script>-->
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "audio-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server index.js --inline"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ractive": "^0.7.3"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^1.12.0"
+  }
+}
