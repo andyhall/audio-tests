@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Audio test</title>
+	<style type="text/css">
+		button {
+			margin: 30px 70px 0;
+			padding: 8px 16px;
+		}
+		button, label { 
+			font: 300 20px "Helvetica Neue", Helvetica, sans-serif;
+			display: inline-block;
+		}
+		.label1 {
+			padding: 0 6px;
+			display: inline-block;
+			text-align: right;
+			width: 145px;
+		}
+		input, textarea {
+			width: 200px;
+			font-size: 18px;
+    		line-height: 24px;
+		}
+		.invalid {
+			background-color: rgba(255,0,0,0.1);
+		}
+	</style>
+</head>
+
+<body>
+	<div id="ui"></div>
+	<script id='template' type='text/ractive'>
+		<button on-click='play'>{{ playing ? 'Stop' : 'Start'}}</button>
+		{{ #each params:i }}
+			<p></p>
+			<label class="label1" for="param{{i}}">{{label}}</label>
+			{{ #if (type==='area') }}
+				<textarea on-input="param-change"  
+					{{#invalid}}class="invalid"{{/if}} 
+					value="{{val}}"></textarea>
+			{{ else }}
+				<input on-input="param-change" 
+					{{#invalid}}class="invalid"{{/if}} 
+					value="{{val}}" type="range" min="{{min}}" max="{{max}}" step="{{step}}">
+			{{ /if }}
+			<label for="param{{i}}">{{{ display ? display(val) : val}}}</label>
+		{{ /each }}
+	</script>
+
+	<script src="lib/wad.min.js"></script>
+	<script src="lib/ractive.min.js"></script>
+	<script src="bundle.js"></script>
+</body>
+
+</html>
